@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflections in English - Fredy Acosta</title>
+    <style>
+        :root {
+            --bg: #071020;
+            --card: #08131c;
+            --neon: #00b3ff;
+            --accent: #7afcff;
+            --glass: rgba(255,255,255,0.03);
+            --muted: #9aa6b2;
+            --glow: 0 6px 28px rgba(0,179,255,0.12);
+            --radius: 14px;
+            --maxw: 1100px;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: #dfeff6;
+            line-height: 1.6;
+        }
+        body {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            background: 
+                radial-gradient(1200px 600px at 10% 10%, rgba(0,179,255,0.04), transparent 6%),
+                radial-gradient(1000px 500px at 90% 90%, rgba(122,252,255,0.02), transparent 8%),
+                var(--bg);
+        }
+        .container {
+            max-width: var(--maxw);
+            width: 100%;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--neon), #6b8cff);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #02121b;
+            transform: rotate(-5deg);
+            box-shadow: 0 8px 25px rgba(0,179,255,0.15);
+        }
+        .logo-text h1 {
+            color: var(--accent);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .logo-text p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+        nav {
+            display: flex;
+            gap: 10px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: var(--neon);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(0,179,255,0.1);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        nav a:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+            background: rgba(0,179,255,0.05);
+        }
+        .hero {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(122,252,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .blog-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(0,179,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,179,255,0.15);
+            border-color: rgba(0,179,255,0.2);
+        }
+        .blog-card h3 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .blog-meta {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+        }
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .blog-excerpt {
+            color: #cfeffd;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .blog-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, var(--neon), var(--accent));
+            color: #02121b;
+            box-shadow: 0 4px 15px rgba(0,179,255,0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,179,255,0.4);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--neon);
+            border: 1px solid rgba(0,179,255,0.3);
+        }
+        .btn-secondary:hover {
+            background: rgba(0,179,255,0.1);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--neon);
+            border: 1px solid rgba(122,252,255,0.3);
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+        .btn-outline:hover {
+            background: rgba(122,252,255,0.1);
+        }
+        footer {
+            margin-top: 50px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: var(--muted);
+        }
+        .footer-info {
+            margin-bottom: 15px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .blog-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .blog-card:nth-child(1) { animation-delay: 0.1s; }
+        .blog-card:nth-child(2) { animation-delay: 0.2s; }
+        .blog-card:nth-child(3) { animation-delay: 0.3s; }
+        .blog-card:nth-child(4) { animation-delay: 0.4s; }
+        .blog-card:nth-child(5) { animation-delay: 0.5s; }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(7, 16, 32, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, rgba(8, 19, 28, 0.95), rgba(8, 19, 28, 0.98));
+            border: 1px solid rgba(122,252,255,0.2);
+            border-radius: 20px;
+            margin: 40px auto;
+            padding: 0;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 25px 80px rgba(0,179,255,0.3);
+            position: relative;
+            animation: modalSlideIn 0.4s ease;
+        }
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-header {
+            padding: 25px 30px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .modal-header h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        .modal-meta {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin: 8px 0 20px;
+        }
+        .modal-body {
+            padding: 25px 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: var(--muted);
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .modal-close:hover {
+            background: rgba(255,0,0,0.2);
+            color: #ff6b6b;
+            transform: rotate(90deg);
+        }
+        
+        /* Enhanced content styles */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .feature-item {
+            background: rgba(0,179,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--neon);
+        }
+        .feature-item h4 {
+            color: var(--accent);
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+        }
+        .feature-item p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #cfeffd;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(122,252,255,0.08), rgba(0,179,255,0.05));
+            border: 1px solid rgba(122,252,255,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .highlight-box::before {
+            content: '💡';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--card);
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+        .quote {
+            border-left: 4px solid var(--neon);
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--accent);
+        }
+        .section-title {
+            color: var(--accent);
+            margin: 25px 0 15px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                justify-content: center;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-content {
+                margin: 20px auto;
+                width: 95%;
+            }
+        }
+        .audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .audio-btn {
+            background: var(--card);
+            border: 1px solid rgba(0,179,255,0.3);
+            color: var(--neon);
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .audio-btn:hover {
+            background: rgba(0,179,255,0.1);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">FA</div>
+                <div class="logo-text">
+                    <h1>Reflections in English</h1>
+                    <p>Futuristic Blog - Fredy Acosta</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h2>Learning - Technology - Critical Thought</h2>
+            <p>A curated selection of posts showcasing reflections on software development, artificial intelligence, and modern technology. Built as evidence for bilingual assessment with clear English writing and media integration.</p>
+        </section>
+
+        <nav>
+            <a href="#journey">My Journey</a>
+            <a href="#interview">AI Interview</a>
+            <a href="#steve-jobs">Steve Jobs</a>
+            <a href="#critical-thinking">Critical Thinking</a>
+            <a href="#crime-punishment">Crime & Punishment</a>
+        </nav>
+
+        <main>
+            <div class="blog-grid">
+                <!-- Existing posts remain the same -->
+                <article class="blog-card" id="journey">
+                    <h3>My Journey in Software Analysis and Development</h3>
+                    <div class="blog-meta">
+                        <span>📅 Nov 11, 2025</span>
+                        <span>📚 Education</span>
+                    </div>
+                    <p class="blog-excerpt">
+                        Exploring my academic path in the Software Analysis and Development program at SENA. 
+                        This journey covers core programming concepts, development tools, and my aspirations 
+                        to become a professional software developer.
+                    </p>
+                    <div class="blog-actions">
+                        <button class="btn btn-primary" onclick="showPdf('triptico')">View Academic Brochure</button>
+                        <button class="btn btn-secondary" onclick="scrollToPost('interview')">Next Post</button>
+                    </div>
+                </article>
+
+                <article class="blog-card" id="interview">
+                    <h3>AI in Education: Transforming Learning Experiences</h3>
+                    <div class="blog-meta">
+                        <span>📅 Nov 11, 2025</span>
+                        <span>🎤 Interview</span>
+                    </div>
+                    <p class="blog-excerpt">
+                        How artificial intelligence is revolutionizing education and language learning. 
+                        Personal insights on using AI tools to enhance English practice and software 
+                        development skills through interactive learning methods.
+                    </p>
+                    <div class="blog-actions">
+                        <button class="btn btn-primary" onclick="showPdf('interview')">Read Full Interview</button>
+                        <button class="btn btn-secondary" onclick="scrollToPost('steve-jobs')">Next Post</button>
+                    </div>
+                </article>
+
+                <article class="blog-card" id="steve-jobs">
+                    <h3>Steve Jobs: The Visionary Who Changed Technology</h3>
+                    <div class="blog-meta">
+                        <span>📅 Nov 11, 2025</span>
+                        <span>📖 Biography</span>
+                    </div>
+                    <p class="blog-excerpt">
+                        The remarkable story of Steve Jobs and his impact on modern technology through 
+                        Apple, NeXT, and Pixar. How his focus on design and user experience shaped 
+                        the digital world we live in today.
+                    </p>
+                    <div class="blog-actions">
+                        <button class="btn btn-primary" onclick="showPdf('chronicle')">Read Chronicle</button>
+                        <button class="btn btn-secondary" onclick="scrollToPost('critical-thinking')">Next Post</button>
+                    </div>
+                </article>
+
+                <!-- Enhanced Critical Thinking with Modal -->
+                <article class="blog-card" id="critical-thinking">
+                    <h3>Critical Thinking in the Digital Age</h3>
+                    <div class="blog-meta">
+                        <span>📅 Nov 11, 2025</span>
+                        <span>🤔 Deep Analysis</span>
+                    </div>
+                    <p class="blog-excerpt">
+                        Navigating information overload in an era of digital deception. Learn essential skills 
+                        for media literacy, source verification, and bias identification in the age of AI.
+                    </p>
+                    <div class="blog-actions">
+                        <button class="btn btn-primary" onclick="showDetailedContent('critical-thinking')">Read Full Analysis</button>
+                        <button class="btn btn-outline" onclick="showCriticalThinkingGuide()">Quick Guide</button>
+                        <button class="btn btn-secondary" onclick="scrollToPost('crime-punishment')">Next Post</button>
+                    </div>
+                </article>
+
+                <!-- Enhanced Crime & Punishment with Modal -->
+                <article class="blog-card" id="crime-punishment">
+                    <h3>Crime and Punishment: Justice in Modern Society</h3>
+                    <div class="blog-meta">
+                        <span>📅 Nov 11, 2025</span>
+                        <span>⚖️ Ethics & Philosophy</span>
+                    </div>
+                    <p class="blog-excerpt">
+                        Exploring the complex relationship between crime, punishment, and societal evolution. 
+                        How do we balance justice, rehabilitation, and prevention in the 21st century?
+                    </p>
+                    <div class="blog-actions">
+                        <button class="btn btn-primary" onclick="showDetailedContent('crime-punishment')">Read Full Analysis</button>
+                        <button class="btn btn-outline" onclick="showJusticeFramework()">Justice Models</button>
+                        <button class="btn btn-secondary" onclick="scrollToPost('journey')">Back to Top</button>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-info">
+                <p><strong>GA4-240202501-AA1-EV03</strong> • Fredy Acosta</p>
+                <p>Academic Evidence Portfolio</p>
+            </div>
+            <p>Futuristic Blog Theme with Neon Design Elements</p>
+        </footer>
+    </div>
+
+    <!-- Modal for Detailed Content -->
+    <div id="contentModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div class="modal-header">
+                <h3 id="modalTitle">Detailed Analysis</h3>
+                <div class="modal-meta" id="modalMeta"></div>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div class="audio-controls">
+        <button class="audio-btn" id="audioToggle">🔊 Ambient Sound</button>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('contentModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMeta = document.getElementById('modalMeta');
+        const modalBody = document.getElementById('modalBody');
+
+        function showDetailedContent(type) {
+            if (type === 'critical-thinking') {
+                modalTitle.textContent = 'Critical Thinking in the Digital Age: Navigating Information Overload';
+                modalMeta.innerHTML = '<span>📅 Nov 11, 2025</span><span>🤔 Deep Analysis</span>';
+                modalBody.innerHTML = `
+                    <p>In an era where we're bombarded with 6,000-10,000 ads daily and consume over 100,000 digital words each day, critical thinking has become our most essential survival skill.</p>
+
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">74%</span>
+                            <span class="stat-label">of people encounter fake news weekly</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3.2s</span>
+                            <span class="stat-label">average attention span online</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">68%</span>
+                            <span class="stat-label">share without reading</span>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>🚨 The Digital Deception Challenge</h4>
+                        <p>Deepfakes can now replicate anyone's voice and appearance with 95% accuracy. AI-generated content floods social media. Algorithmic bias shapes what we see without our awareness. Without critical thinking, we become passive consumers of manipulated reality.</p>
+                    </div>
+
+                    <div class="section-title">Essential Critical Thinking Framework</div>
+
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>🔍 Source Verification</h4>
+                            <p>Check author credentials, publication history, and potential conflicts of interest. Use tools like Media Bias Fact Check.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>🎯 Identify Biases</h4>
+                            <p>Recognize confirmation bias, algorithmic bias, and commercial interests shaping information.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>📊 Fact-Checking</h4>
+                            <p>Use Snopes, FactCheck.org, and reverse image search to verify claims and images.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>🤖 AI Literacy</h4>
+                            <p>Understand how algorithms work and recognize AI-generated content patterns.</p>
+                        </div>
+                    </div>
+
+                    <div class="quote">
+                        "The greatest enemy of knowledge is not ignorance, but the illusion of knowledge." - Stephen Hawking
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>💡 Practical Implementation</h4>
+                        <p>Create a personal verification checklist. Always ask: Who benefits from this information? What evidence supports this? What alternative perspectives exist? Develop the habit of pausing before sharing and verifying before believing.</p>
+                    </div>
+                `;
+            } else if (type === 'crime-punishment') {
+                modalTitle.textContent = 'Crime and Punishment: Justice in the Modern World';
+                modalMeta.innerHTML = '<span>📅 Nov 11, 2025</span><span>⚖️ Ethics & Philosophy</span>';
+                modalBody.innerHTML = `
+                    <p>Exploring the complex relationship between crime, punishment, and societal evolution. How do we balance justice, rehabilitation, and prevention in the 21st century?</p>
+
+                    <div class="highlight-box">
+                        <h4>🎯 The Four Pillars of Modern Justice</h4>
+                        <p>Contemporary justice systems must balance retribution, deterrence, rehabilitation, and restoration. The challenge lies in determining the right mix for different offenses and offenders.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>🔁 Restorative Justice</h4>
+                            <p>Focuses on repairing harm through reconciliation with victims and community. Shows 25% lower recidivism rates.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>🎓 Rehabilitation</h4>
+                            <p>Education, therapy, and skill-building reduce reoffending by 43% compared to pure punishment.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>⚠️ Deterrence</h4>
+                            <p>Both specific (individual) and general (societal) prevention through consequences and awareness.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>⚖️ Retribution</h4>
+                            <p>Society's need for proportional response and moral balance, while avoiding excessive punishment.</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">68%</span>
+                            <span class="stat-label">of prisoners reoffend within 3 years</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">55%</span>
+                            <span class="stat-label">drop with education programs</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">$31k</span>
+                            <span class="stat-label">annual cost per prisoner</span>
+                        </div>
+                    </div>
+
+                    <div class="section-title">Global Perspectives on Justice</div>
+
+                    <p><strong>Nordic Model:</strong> Focus on rehabilitation and humane conditions. Prisons resemble college campuses with education and therapy as core components.</p>
+                    <p><strong>East Asian Approach:</strong> Strong community and family involvement in rehabilitation processes.</p>
+                    <p><strong>Digital Age Challenges:</strong> Cybercrime, digital evidence, and global jurisdiction require new legal frameworks and international cooperation.</p>
+
+                    <div class="quote">
+                        "The degree of civilization in a society can be judged by entering its prisons." - Fyodor Dostoevsky
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>💡 Future Directions</h4>
+                        <p>Technology offers new solutions: electronic monitoring, AI risk assessment, virtual rehabilitation programs, and blockchain for transparent justice processes. The future lies in smart justice systems that are both effective and humane, focusing on prevention and addressing root causes of crime.</p>
+                    </div>
+                `;
+            }
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Existing functions
+        function scrollToPost(postId) {
+            document.getElementById(postId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function showPdf(type) {
+            const pdfNames = {
+                'triptico': 'Triptico2-2.pdf',
+                'interview': 'Interview-3.pdf',
+                'chronicle': 'Chronicle-3.pdf'
+            };
+            
+            const pdfUrl = `pdfs/${pdfNames[type]}`;
+            window.open(pdfUrl, '_blank');
+        }
+
+        function showCriticalThinkingGuide() {
+            alert(`📚 Critical Thinking Quick Guide:
+
+• Verify sources before sharing
+• Check author credentials and biases
+• Use fact-checking tools
+• Consider alternative perspectives
+• Pause and think before reacting`);
+        }
+
+        function showJusticeFramework() {
+            alert(`⚖️ Justice System Models:
+
+• Restorative: Repair harm through reconciliation
+• Rehabilitative: Education and therapy focus
+• Deterrent: Prevention through consequences
+• Retributive: Proportional punishment
+
+Each model serves different societal needs.`);
+        }
+
+        const audioToggle = document.getElementById('audioToggle');
+        let audioEnabled = false;
+        const audio = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_5e7b5a5aa7.mp3?filename=ambient-12031.mp3');
+        audio.loop = true;
+        audio.volume = 0.3;
+
+        audioToggle.addEventListener('click', function() {
+            if (!audioEnabled) {
+                audio.play().then(() => {
+                    audioEnabled = true;
+                    audioToggle.textContent = '🔇 Mute Sound';
+                }).catch(error => {
+                    alert('Please click anywhere on the page first to enable audio, then try again.');
+                });
+            } else {
+                audio.pause();
+                audioEnabled = false;
+                audioToggle.textContent = '🔊 Ambient Sound';
+            }
+        });
+
+        document.addEventListener('click', function enableAudio() {
+            document.removeEventListener('click', enableAudio);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.blog-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            const heroText = document.querySelector('.hero h2');
+            const originalText = heroText.textContent;
+            heroText.textContent = '';
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < originalText.length) {
+                    heroText.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            setTimeout(typeWriter, 1000);
+        });
+    </script>
+</body>
+</html>
